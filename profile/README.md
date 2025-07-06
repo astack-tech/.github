@@ -16,4 +16,4 @@ AStack is a composable framework designed to simplify the development of AI appl
 
 AStack is an independent technical framework with its own architecture and ecosystem, built on top of [Hlang](https://github.com/hlang-tech) - a highly semantic [fourth-generation language (4GL)](https://en.wikipedia.org/wiki/Fourth-generation_programming_language) inspired by Flow-Based Programming paradigms. This foundation on Hlang, which is particularly well-suited for computational modeling and AI-generated code, is what gives AStack its power. The framework emphasizes minimalism and performance, allowing developers to create complex systems with minimal boilerplate code while maintaining complete technical autonomy.
 
-<a href="https://astack.dev" target="_blank">Website</a>
+<a href="https://astack.tech" target="_blank">Website</a>
