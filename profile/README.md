@@ -1,34 +1,32 @@
 <a href="https://astack.tech"><img src="https://raw.githubusercontent.com/astack-tech/.github/main/profile/assets/banner.svg" alt="AStack — Everything is a component. A composable TypeScript framework for AI applications." width="100%"></a>
 
-[Website](https://astack.tech) · [Documentation](https://deepwiki.com/astack-tech/astack) · [Source](https://github.com/astack-tech/astack) · [Examples](https://github.com/astack-tech/astack/tree/master/examples) · [Brand assets](https://astack.tech/brand)
+[Website](https://astack.tech) · [Docs](https://astack.tech/docs) · [Examples](https://astack.tech/examples) · [Source](https://github.com/astack-tech/astack) · [npm](https://www.npmjs.com/org/astack-tech) · [Brand](https://astack.tech/brand)
 
-AStack is an open-source TypeScript framework for AI agents, workflows, and RAG applications. Its central idea is **everything is a component**: models, tools, agents, and application logic use a shared component interface. Connect their ports to define how data moves through your application.
+AStack is an open-source TypeScript framework for AI agents, workflows and retrieval. Its central idea is **everything is a component**: models, tools, agents and application logic share one component interface. You connect their ports into a pipeline, and data flows along the connections.
 
-## Components, ports, and pipelines
+## The computation model
 
-AStack has its own implementation and architecture. It builds on [HLang](https://github.com/hlang-tech/hlang), a [fourth-generation language](https://en.wikipedia.org/wiki/Fourth-generation_programming_language) based on Flow-Based Programming and monadic composition. HLang provides the computational model; AStack adds the components used to build AI applications.
+Three ideas carry the whole framework: **components** with named ports, **ports** that connect outputs to inputs, and **pipelines** that run the graph. Agents, multi-step workflows and routing are patterns built from them, not separate subsystems. The runtime is [HLang](https://github.com/hlang-tech/hlang), a flow-based programming runtime on RxJS, so each connection is an observable stream.
 
-The common interface reduces adapter code between components. Run a component directly with `run()` or connect it to a reactive pipeline through `_transform()`. TypeScript describes the data contracts, and Observable streams carry data between ports. The same explicit structure can be written by a developer or generated with coding tools.
+The model is original. [PocketFlow](https://the-pocket.github.io/PocketFlow/) reached a similar "the graph is the framework" idea independently and focuses on a 100-line Python core. AStack does not optimize for line count: it optimizes for typed, reactive data flow in TypeScript, where each connection carries its own data instead of a shared store. [Read the comparison](https://astack.tech/docs/introduction).
 
 | Package | Purpose |
 | --- | --- |
-| [`@astack-tech/core`](https://github.com/astack-tech/astack/tree/master/packages/core) | Component contracts, ports, and pipeline composition |
-| [`@astack-tech/components`](https://github.com/astack-tech/astack/tree/master/packages/components) | Agents, streaming, and reusable application components |
-| [`@astack-tech/integrations`](https://github.com/astack-tech/astack/tree/master/packages/integrations) | Model providers and external service connections |
-| [`@astack-tech/tools`](https://github.com/astack-tech/astack/tree/master/packages/tools) | Tools that agents can call |
+| [`@astack-tech/core`](https://www.npmjs.com/package/@astack-tech/core) | `Component`, `Pipeline` and ports |
+| [`@astack-tech/components`](https://www.npmjs.com/package/@astack-tech/components) | Agents, streaming, RLM, text splitting and tool invocation |
+| [`@astack-tech/tools`](https://www.npmjs.com/package/@astack-tech/tools) | Tools that agents can call |
+| [`@astack-tech/integrations`](https://www.npmjs.com/package/@astack-tech/integrations) | Model providers |
 
 ## Start building
 
 ```sh
-npm install @astack-tech/core@beta @astack-tech/components@beta @astack-tech/integrations@beta
+npm install @astack-tech/core@beta @astack-tech/components@beta
 ```
 
-Follow the [quick start](https://astack.tech/#quickstart) to configure a model provider and run your first agent. AStack is in public beta; check the [release notes](https://github.com/astack-tech/astack/releases) before updating dependencies.
-
-Explore [browser automation](https://github.com/astack-tech/astack/tree/master/examples/simple-browser-use), [deep research](https://github.com/astack-tech/astack/tree/master/examples/simple-deep-research), and [recursive language models](https://astack.tech/blog/implementing-rlm-recursive-language-model). Use the source and examples to choose the parts your application needs.
+Follow [Getting started](https://astack.tech/docs/getting-started), then work through the [examples](https://astack.tech/examples) in order. Each one is a single file that adds one idea: component, pipeline, routing, tools, chat, workflow, agent, streaming, RLM and an HTTP server. AStack is in public beta; check the [changelogs](https://github.com/astack-tech/astack/releases) before you update.
 
 ## Contribute
 
-AStack is [MIT licensed](https://github.com/astack-tech/astack/blob/master/LICENSE). Issues, documentation improvements, and pull requests are welcome. Read the [contribution guide](https://github.com/astack-tech/astack/blob/master/.github/CONTRIBUTING.md) and target `dev` when proposing a change.
+AStack is [MIT licensed](https://github.com/astack-tech/astack/blob/master/LICENSE). Read the [contribution guide](https://github.com/astack-tech/astack/blob/master/.github/CONTRIBUTING.md) and [AGENTS.md](https://github.com/astack-tech/astack/blob/master/AGENTS.md), then open a pull request against `dev`. Every change starts with a failing test.
 
-[Report an issue](https://github.com/astack-tech/astack/issues) · [Open a pull request](https://github.com/astack-tech/astack/pulls) · [Ask DeepWiki](https://deepwiki.com/astack-tech/astack)
+[Report an issue](https://github.com/astack-tech/astack/issues) · [Discussions](https://github.com/astack-tech/astack/discussions) · [Security](https://github.com/astack-tech/astack/security/policy)
